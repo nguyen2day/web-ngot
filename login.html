@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="testcode.html">
+<link rel="stylesheet" href="">
+<html>
+    <head>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>web bán hàng của Công và Nguyên</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+
+    </head>
+    <style>
+        :root{
+            --maincolor:#c4c9cd ;
+        }
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            transition:.2s;
+            outline:none;
+            text-transform:capitalize;
+            text-decoration:none;
+        }
+        html{
+            font-size: 62.5%;
+            scroll-behavior: smooth;
+        }
+        .header{
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 7%;
+            background-color: white;
+            box-shadow: rgba(0,0,0,0.35) 0px 5px 15px; 
+            z-index: 1000000000000; 
+        }
+        
+        .header #logo{
+            font-size: 3.5rem;
+            color: black;
+        }
+        .narbar a{
+            color:black;
+            font-size: 1.7rem;
+            margin-left: 1rem;
+        }
+        .narbar a:hover{
+            background-color: var(--maincolor);
+            color: white;
+            border-radius: 10px;
+            padding: 1rem 3rem;
+        }
+        .icons div{
+            font-size: 2rem;
+            margin-left: 2rem;
+            color: black;
+            cursor: pointer;
+        }
+        .icons div:hover{
+            background-color: var(--maincolor);
+            color: white;
+            border-radius: 10px;
+            padding: 1rem 3rem;
+        }
+        #menu-bar{
+            display: none;
+        }
+        .search-box.active{
+            left: 40%;
+        }
+
+        .search-box{
+            position: absolute;
+            top:110%;
+            left: 100%;
+            width: 50%;
+            right: 2rem;
+        
+        }
+        .search-box input{
+            padding: 1.5rem 2rem;
+            width: 100%;
+            border-radius: 15px;
+            border:0;
+            box-shadow: rgba(0,0,0,0.35) 0px 5px 15px;
+        }
+        .shopping-cart.active{
+            left: 70%;
+        }
+        .shopping-cart{
+            position: absolute;
+            top: 110%;
+            width: 40rem;
+            right: 2rem;
+            left:100%;
+        }
+        .shopping-box{
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: .5rem;
+        }
+        .shopping-box img{
+            width: 150px;
+        }
+        .fa-times{
+            position: absolute;
+            top:50%;
+            right: 7rem;
+            transform: translateY(-50%);
+            font-size: 2rem;
+        }
+        .shop-content h3{
+            font-size: 1.7rem;
+            padding: .5rem;
+        }
+        .shop-content span{
+            margin: .5rem;
+            font-size: 1.7rem;
+        }
+        .narbar.active{
+            left: 0;
+        }
+        .main-background{
+           background:url(http://file.hstatic.net/200000174405/article/nike_785e220bc8f2464d8cdd0459a906a09d.jpeg) ; 
+           background-size: cover;
+           background-position: center;
+           margin-top: 6%;
+           width: 100%;
+           height: 100vh;
+           background-repeat: no-repeat;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           flex-wrap: wrap;
+           gap: 15px;
+        }
+        .left-back{
+            flex:1 1 45rem;
+        }
+        .right-content h1{
+            font-size: 50px;
+            letter-spacing: 3px;
+        }
+        .left-inner{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .right-content{
+            flex: 1 1 30rem;
+        }
+        .right-content p{
+            font-size: 1.5rem;
+        }
+        .right-content i{
+            font-size: 2rem;
+        }
+        .inner-main-content{
+            background: black;
+            padding: 1.5rem 2rem;
+            margin-left: 60%;
+            justify-content: center;
+            align-items: center;
+        }
+        .inner-main-content h1{
+            color: white;
+        }
+        .inner-main-content p{
+            color: white;
+            font-size: 1.5rem;
+            padding: .5rem 0;
+        }
+        .inner-main-content span{
+            color: white;
+            font-size: 1.7rem;
+            margin-right: 1rem;
+        }
+        .shopnow-bnt{
+            display: block;
+            padding: 1rem 2rem;
+            background-color: white;
+            width:40%;
+            border-radius: 15px;
+            color:black;
+            font-size: 1.7rem;
+        }
+        .gallery{
+            padding: 2rem 7%;
+        }
+        .gallery h1{
+            font-size: 40px;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        .main-gallery{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 1px;
+        }
+        .inner-gallery{
+            flex:1 1 300px;
+        }
+        .inner-gallery img{
+            width: 100%;
+        }
+        .banner{
+            padding: 3rem 7%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap:5px;
+            background-color: cyan;
+        }
+        .inner-banner{
+            flex: 1 1 45rem;
+        }
+        .inner-banner img{
+            width: 90%;
+            height: 500px;
+        }
+        .inner-banner h1{
+            font-size: 40px;
+            padding: 0,5rem 0;
+        }
+        .inner-banner a{
+            padding: .7rem 3rem;
+            background-color: white;
+            color: black;
+            font-size: 1.7rem;
+            text-align: center;
+            margin-top: .7rem;
+            border-radius: 15px;
+            padding-bottom: 1%;
+        }
+        .products-type{
+            padding:3rem 7%
+        }
+        .products-type h1{
+            font-size: 40px;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        .main-products{
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            gap: 1px;
+            flex-wrap: wrap;
+            padding: 2rem 0;
+        }
+        .inner-products{
+            flex: 1 1 300px;
+            position: relative;
+        }
+        .inner-products a{
+            position: absolute;
+            top: 50%;
+            left: 0;
+            padding: 1rem 3rem;
+            background: black;
+            color: white;
+            font-size: 1.5rem;
+            border-radius: 15px;
+            z-index: 10000000;
+        }
+        .header.sticky {
+            background-color:rgba(0,0,0,0.35) ;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        @media (max-width:768px) {
+            html{
+                font-size: 50%;
+            }
+            #menu-bar{
+            display: inline-block;
+            }
+            .header{
+                padding: 2rem;
+            }
+            .narvar{
+                position: absolute;
+                top:100%;
+                background: var(--animation);
+                width: 50rem;
+                height:100vh ;
+                left: 100%;
+            }
+            .narvar a{
+                display: block;
+                color: white;
+                background: black;
+                margin: 3rem;
+                padding: 1.5rem;
+                border-radius: 15px;
+                width: 45rem;
+            }
+        }
+
+        </style>
+    <body>
+        <header class="header">
+            <a href="https://toppng.com/uploads/preview/logo-nike-11550726013nlp37aisvx.png">đây là<span>logo</span></a>
+            <nav class="narbar">
+                <a href="testcode.html">home</a>
+                <a href="#">women</a>
+                <a href="#">men</a>
+                <a href="#">gallery</a>
+                <a href="#">contact</a>
+
+            </nav>
+            <div class="icons">
+                <div class="fas fa-bars" id="menu-bars"></div>
+                <div class="fas fa-shopping-cart" id="shop-cart"></div>
+                <div class="fas fa-search" id="search-bar"></div>
+            </div>
+            <div class="search-box">
+                <input type="search" placeholder="search here">
+            </div>
+            <!--shoping cart-->
+            <div class="shopping-cart">
+                <div class="shopping-box">
+                    <i class="fas fa-times"></i>
+                    <img src="https://bizweb.dktcdn.net/100/287/440/products/ao-thun-local-brand-dep-mau-trang-in-hinh-3.jpg?v=1664005757047" alt="">
+                    <div class="shop-content">
+                        <h3>online shopping</h3>
+                        <span class="quantity">1</span>
+                        <span class="muntiply">*</span>
+                        <span class="muntiply">230.000vnd</span>
+                    </div>
+                </div>
+                <div class="shopping-box">
+                    <i class="fas fa-times"></i>
+                    <img src="https://bizweb.dktcdn.net/100/287/440/products/ao-thun-local-brand-dep-mau-trang-in-hinh-3.jpg?v=1664005757047" alt="">
+                    <div class="shop-content">
+                        <h3>online shopping</h3>
+                        <span class="quantity">1</span>
+                        <span class="muntiply">*</span>
+                        <span class="muntiply">230.000vnd</span>
+                    </div>
+                </div>
+                <div class="shopping-box">
+                    <i class="fas fa-times"></i>
+                    <img src="https://bizweb.dktcdn.net/100/287/440/products/ao-thun-local-brand-dep-mau-trang-in-hinh-3.jpg?v=1664005757047" alt="">
+                    <div class="shop-content">
+                        <h3>online shopping</h3>
+                        <span class="quantity">1</span>
+                        <span class="muntiply">*</span>
+                        <span class="muntiply">230.000vnd</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="main-background">
+            <div class="left-back"></div>
+
+
+            <div class="left-back">
+                <div class="left-inner">
+                    <div class="right-content">
+                        <h1>đâsdasdasdasdasd</h1>
+                        <p>asdasdsafdsfasdf<br>dasdasdasdasdasdasd<br>dasdasdasdgdfhdfhdfgdfg<br>sấdasdasd</p>
+                        <i class="fas fa-heart"></i>
+                    </div>
+                </div>
+                <div class="right-content">
+                    <div class="inner-main-content">
+                        <h1>Special offer</h1>
+                        <p>black sleeves</p>
+                        <span>3$</span>
+                        <span>3$</span>
+                        <a href="#"class="shopnow-bnt">shop now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--main back ground image ended-->
+
+
+    <!--gallary-->
+    <div class="gallery">
+
+        <h1>Our gallery</h1>
+        <div class="main-gallery">
+            <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/af33c8a9-82cf-410d-bcfe-4a3e8081df78/air-t-shirt-nXPkGl.png" alt="">
+            <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/ec33421c-fc6c-46cc-aaad-bcf71bf292df/aps-dri-fit-adv-short-sleeve-versatile-top-GXDt6f.png" alt="">
+        </div>
+        <div class="main-gallery">
+            <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/1e91e13c-f515-45c2-9c30-25f634e49d6c/air-max-90-se-shoes-FQ39pC.png">
+        <div class="main-gallery">
+            <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/d367f1b5-1c54-43dd-ab89-9a0f1e198d37/full-force-low-shoes-kX7WVF.png" alt="">
+            <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/0e71e52d-be87-4397-aeb7-1d528a8f6513/go-flyease-easy-on-off-shoes-3svRCL.png" alt="">
+        </div>
+    </div>
+    <!--gallary end-->
+    <!--banner start-->
+    <div class="banner">
+        <div class="inner-banner">
+            <img src="https://tse4.mm.bing.net/th?id=OIP.5-48HrCkJctogIi6W8LfSwHaE7&pid=Api&P=0&h=220" alt="">
+        </div>
+        <div class="inner-banner">
+            <h1>we offer new brand style</h1>
+            <a href="#"id="shope-now"><b>shop now</b></a>
+        </div>
+    </div>
+    <!--banner ended-->
+
+    <!--products type -->
+<div class="products-type">
+    <h1>Products type</h1>
+</div>
+<div class="main-products">
+    <div class="inner-products">
+        <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/a0f8ae47-a57e-47dc-8b94-fff3f9f4c846/multi-older-dri-fit-training-top-v6QhBQ.png"alt="" style="width: 100%;">
+        <a href="#" id="shop-now">shop now</a>
+    </div>
+    <div class="inner-products">
+        <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/0f313bc8-b8db-4fe3-875f-02f62cce56b6/sportswear-french-terry-crew-neck-sweatshirt-RF3ZSr.png"alt=""style="width: 100%;">
+        <a href="#" id="shop-now">shop now</a>
+    </div>
+    <div class="inner-products">
+        <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/c4d552a9-98e0-411c-8bee-417c57783094/sportswear-fleece-1-2-zip-cropped-sweatshirt-r1SgXb.png"alt="">
+        <a href="#" id="shop-now">shop now</a>
+    </div>
+    <div class="inner-products">
+        <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/a0f8ae47-a57e-47dc-8b94-fff3f9f4c846/multi-older-dri-fit-training-top-v6QhBQ.png"alt="" style="width: 100%;">
+        <a href="#" id="shop-now">shop now</a>
+    </div>
+    <div class="inner-products">
+        <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/0f313bc8-b8db-4fe3-875f-02f62cce56b6/sportswear-french-terry-crew-neck-sweatshirt-RF3ZSr.png"alt=""style="width: 100%;">
+        <a href="#" id="shop-now">shop now</a>
+    </div>
+    <div class="inner-products">
+        <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/c4d552a9-98e0-411c-8bee-417c57783094/sportswear-fleece-1-2-zip-cropped-sweatshirt-r1SgXb.png"alt="">
+        <a href="#" id="shop-now">shop now</a>
+    </div>
+    <div class="inner-products">
+        <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/a0f8ae47-a57e-47dc-8b94-fff3f9f4c846/multi-older-dri-fit-training-top-v6QhBQ.png"alt="" style="width: 100%;">
+        <a href="#" id="shop-now">shop now</a>
+    </div>
+    <div class="inner-products">
+        <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/0f313bc8-b8db-4fe3-875f-02f62cce56b6/sportswear-french-terry-crew-neck-sweatshirt-RF3ZSr.png"alt=""style="width: 100%;">
+        <a href="#" id="shop-now">shop now</a>
+    </div>
+    <div class="inner-products">
+        <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/c4d552a9-98e0-411c-8bee-417c57783094/sportswear-fleece-1-2-zip-cropped-sweatshirt-r1SgXb.png"alt="">
+        <a href="#" id="shop-now">shop now</a>
+    </div><div class="inner-products">
+        <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/a0f8ae47-a57e-47dc-8b94-fff3f9f4c846/multi-older-dri-fit-training-top-v6QhBQ.png"alt="" style="width: 100%;">
+        <a href="#" id="shop-now">shop now</a>
+    </div>
+    <div class="inner-products">
+        <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/0f313bc8-b8db-4fe3-875f-02f62cce56b6/sportswear-french-terry-crew-neck-sweatshirt-RF3ZSr.png"alt=""style="width: 100%;">
+        <a href="#" id="shop-now">shop now</a>
+    </div>
+    <div class="inner-products">
+        <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/c4d552a9-98e0-411c-8bee-417c57783094/sportswear-fleece-1-2-zip-cropped-sweatshirt-r1SgXb.png"alt="">
+        <a href="#" id="shop-now">shop now</a>
+    </div><div class="inner-products">
+        <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/a0f8ae47-a57e-47dc-8b94-fff3f9f4c846/multi-older-dri-fit-training-top-v6QhBQ.png"alt="" style="width: 100%;">
+        <a href="#" id="shop-now">shop now</a>
+    </div>
+    <div class="inner-products">
+        <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/0f313bc8-b8db-4fe3-875f-02f62cce56b6/sportswear-french-terry-crew-neck-sweatshirt-RF3ZSr.png"alt=""style="width: 100%;">
+        <a href="#" id="shop-now">shop now</a>
+    </div>
+    <div class="inner-products">
+        <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/c4d552a9-98e0-411c-8bee-417c57783094/sportswear-fleece-1-2-zip-cropped-sweatshirt-r1SgXb.png"alt="">
+        <a href="#" id="shop-now">shop now</a>
+    </div><div class="inner-products">
+        <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/a0f8ae47-a57e-47dc-8b94-fff3f9f4c846/multi-older-dri-fit-training-top-v6QhBQ.png"alt="" style="width: 100%;">
+        <a href="#" id="shop-now">shop now</a>
+    </div>
+    <div class="inner-products">
+        <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/0f313bc8-b8db-4fe3-875f-02f62cce56b6/sportswear-french-terry-crew-neck-sweatshirt-RF3ZSr.png"alt=""style="width: 100%;">
+        <a href="#" id="shop-now">shop now</a>
+    </div>
+    <div class="inner-products">
+        <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/c4d552a9-98e0-411c-8bee-417c57783094/sportswear-fleece-1-2-zip-cropped-sweatshirt-r1SgXb.png"alt="">
+        <a href="#" id="shop-now">shop now</a>
+    </div><div class="inner-products">
+        <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/a0f8ae47-a57e-47dc-8b94-fff3f9f4c846/multi-older-dri-fit-training-top-v6QhBQ.png"alt="" style="width: 100%;">
+        <a href="#" id="shop-now">shop now</a>
+    </div>
+    <div class="inner-products">
+        <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/0f313bc8-b8db-4fe3-875f-02f62cce56b6/sportswear-french-terry-crew-neck-sweatshirt-RF3ZSr.png"alt=""style="width: 100%;">
+        <a href="#" id="shop-now">shop now</a>
+    </div>
+    <div class="inner-products">
+        <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/c4d552a9-98e0-411c-8bee-417c57783094/sportswear-fleece-1-2-zip-cropped-sweatshirt-r1SgXb.png"alt="">
+        <a href="#" id="shop-now">shop now</a>
+    </div><div class="inner-products">
+        <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/a0f8ae47-a57e-47dc-8b94-fff3f9f4c846/multi-older-dri-fit-training-top-v6QhBQ.png"alt="" style="width: 100%;">
+        <a href="#" id="shop-now">shop now</a>
+    </div>
+    <div class="inner-products">
+        <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/0f313bc8-b8db-4fe3-875f-02f62cce56b6/sportswear-french-terry-crew-neck-sweatshirt-RF3ZSr.png"alt=""style="width: 100%;">
+        <a href="#" id="shop-now">shop now</a>
+    </div>
+    <div class="inner-products">
+        <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/c4d552a9-98e0-411c-8bee-417c57783094/sportswear-fleece-1-2-zip-cropped-sweatshirt-r1SgXb.png"alt="">
+        <a href="#" id="shop-now">shop now</a>
+    </div><div class="inner-products">
+        <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/a0f8ae47-a57e-47dc-8b94-fff3f9f4c846/multi-older-dri-fit-training-top-v6QhBQ.png"alt="" style="width: 100%;">
+        <a href="#" id="shop-now">shop now</a>
+    </div>
+    <div class="inner-products">
+        <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/0f313bc8-b8db-4fe3-875f-02f62cce56b6/sportswear-french-terry-crew-neck-sweatshirt-RF3ZSr.png"alt=""style="width: 100%;">
+        <a href="#" id="shop-now">shop now</a>
+    </div>
+    <div class="inner-products">
+        <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/c4d552a9-98e0-411c-8bee-417c57783094/sportswear-fleece-1-2-zip-cropped-sweatshirt-r1SgXb.png"alt="">
+        <a href="#" id="shop-now">shop now</a>
+    </div><div class="inner-products">
+        <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/a0f8ae47-a57e-47dc-8b94-fff3f9f4c846/multi-older-dri-fit-training-top-v6QhBQ.png"alt="" style="width: 100%;">
+        <a href="#" id="shop-now">shop now</a>
+    </div>
+    <div class="inner-products">
+        <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/0f313bc8-b8db-4fe3-875f-02f62cce56b6/sportswear-french-terry-crew-neck-sweatshirt-RF3ZSr.png"alt=""style="width: 100%;">
+        <a href="#" id="shop-now">shop now</a>
+    </div>
+    <div class="inner-products">
+        <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/c4d552a9-98e0-411c-8bee-417c57783094/sportswear-fleece-1-2-zip-cropped-sweatshirt-r1SgXb.png"alt="">
+        <a href="#" id="shop-now">shop now</a>
+    </div><div class="inner-products">
+        <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/a0f8ae47-a57e-47dc-8b94-fff3f9f4c846/multi-older-dri-fit-training-top-v6QhBQ.png"alt="" style="width: 100%;">
+        <a href="#" id="shop-now">shop now</a>
+    </div>
+    <div class="inner-products">
+        <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/0f313bc8-b8db-4fe3-875f-02f62cce56b6/sportswear-french-terry-crew-neck-sweatshirt-RF3ZSr.png"alt=""style="width: 100%;">
+        <a href="#" id="shop-now">shop now</a>
+    </div>
+    <div class="inner-products">
+        <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/c4d552a9-98e0-411c-8bee-417c57783094/sportswear-fleece-1-2-zip-cropped-sweatshirt-r1SgXb.png"alt="">
+        <a href="#" id="shop-now">shop now</a>
+    </div><div class="inner-products">
+        <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/a0f8ae47-a57e-47dc-8b94-fff3f9f4c846/multi-older-dri-fit-training-top-v6QhBQ.png"alt="" style="width: 100%;">
+        <a href="#" id="shop-now">shop now</a>
+    </div>
+    <div class="inner-products">
+        <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/0f313bc8-b8db-4fe3-875f-02f62cce56b6/sportswear-french-terry-crew-neck-sweatshirt-RF3ZSr.png"alt=""style="width: 100%;">
+        <a href="#" id="shop-now">shop now</a>
+    </div>
+    </div>
+</div>
+
+
+
+    <!--products type ended -->
+            <script src="script.js">
+                let searchbar = document.querySelector('search-bar');
+
+
+            </script>
+    </body>
+</html>
